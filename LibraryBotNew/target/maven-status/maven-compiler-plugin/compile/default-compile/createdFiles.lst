@@ -1,0 +1,17 @@
+database/KategoriDAO.class
+admin/controller/AdminController.class
+org/example/MainApp.class
+admin/controller/RegistrasiController.class
+database/BukuDAO.class
+service/ChatbotService.class
+model/Kategori.class
+admin/controller/AdminController$1.class
+admin/controller/AdminController$2.class
+module-info.class
+admin/controller/LoginController.class
+database/DatabaseManager.class
+model/User.class
+admin/controller/WelcomeController.class
+database/UserDAO.class
+controller/ChatController.class
+model/Buku.class

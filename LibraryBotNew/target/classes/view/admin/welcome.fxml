@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="admin.controller.WelcomeController"
+           prefWidth="520" prefHeight="650"
+           style="-fx-background-color: linear-gradient(to bottom right, #4A52C8, #6B72E8, #8E78D4);">
+
+    <!-- Background decorative circles -->
+    <Circle radius="180" fill="#ffffff" opacity="0.04" translateX="-160" translateY="-180"/>
+    <Circle radius="120" fill="#ffffff" opacity="0.06" translateX="200" translateY="-100"/>
+    <Circle radius="90" fill="#ffffff" opacity="0.05" translateX="160" translateY="220"/>
+
+    <!-- Main Card -->
+    <VBox alignment="CENTER" spacing="0" maxWidth="420"
+          style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 30, 0, 0, 8);">
+
+        <!-- Top Purple Banner -->
+        <VBox alignment="CENTER" spacing="6" style="-fx-background-color: #5B63D3; -fx-background-radius: 20 20 0 0; -fx-padding: 35 30 30 30;">
+            <!-- Book Icon -->
+            <StackPane>
+                <Circle radius="36" fill="#ffffff" opacity="0.15"/>
+                <Label text="📚" style="-fx-font-size: 36px;"/>
+            </StackPane>
+            <Label text="Perpustakaan Digital"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Sistem Manajemen Perpustakaan"
+                   style="-fx-font-size: 12px; -fx-text-fill: rgba(255,255,255,0.8);"/>
+        </VBox>
+
+        <!-- Content -->
+        <VBox alignment="CENTER" spacing="18" style="-fx-padding: 35 40 40 40;">
+
+            <Label text="Selamat Datang!"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+            <Label text="Pilih bagaimana Anda ingin mengakses sistem perpustakaan ini."
+                   wrapText="true" textAlignment="CENTER" maxWidth="320"
+                   style="-fx-font-size: 13px; -fx-text-fill: #888; -fx-line-spacing: 3;"/>
+
+            <Separator style="-fx-padding: 5 0;"/>
+
+            <!-- Admin Card Button -->
+            <VBox spacing="0" maxWidth="Infinity"
+                  style="-fx-background-color: #f0f1ff; -fx-background-radius: 14; -fx-border-color: #c5c8f5; -fx-border-radius: 14; -fx-border-width: 1.5; -fx-cursor: hand;"
+                  onMouseClicked="#goToAdmin">
+                <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 18 20;">
+                    <StackPane>
+                        <Circle radius="22" fill="#5B63D3"/>
+                        <Label text="🔑" style="-fx-font-size: 18px;"/>
+                    </StackPane>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <Label text="Masuk sebagai Admin"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #3B3FB6;"/>
+                        <Label text="Login / Registrasi untuk kelola data perpustakaan"
+                               style="-fx-font-size: 11px; -fx-text-fill: #888;" wrapText="true"/>
+                    </VBox>
+                    <Label text="›" style="-fx-font-size: 22px; -fx-text-fill: #5B63D3; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+
+            <!-- User / Chatbot Card Button -->
+            <VBox spacing="0" maxWidth="Infinity"
+                  style="-fx-background-color: #f0fff8; -fx-background-radius: 14; -fx-border-color: #a8e6cc; -fx-border-radius: 14; -fx-border-width: 1.5; -fx-cursor: hand;"
+                  onMouseClicked="#goToChatbot">
+                <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 18 20;">
+                    <StackPane>
+                        <Circle radius="22" fill="#27ae60"/>
+                        <Label text="💬" style="-fx-font-size: 18px;"/>
+                    </StackPane>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <Label text="Masuk sebagai User"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1e8449;"/>
+                        <Label text="Langsung ke chatbot tanpa perlu login"
+                               style="-fx-font-size: 11px; -fx-text-fill: #888;" wrapText="true"/>
+                    </VBox>
+                    <Label text="›" style="-fx-font-size: 22px; -fx-text-fill: #27ae60; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+
+            <Label text="v1.0 — Sistem Perpustakaan Digital"
+                   style="-fx-font-size: 10px; -fx-text-fill: #bbb; -fx-padding: 8 0 0 0;"/>
+        </VBox>
+    </VBox>
+</StackPane>

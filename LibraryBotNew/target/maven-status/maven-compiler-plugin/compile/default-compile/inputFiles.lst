@@ -1,0 +1,15 @@
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/org/example/MainApp.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/database/DatabaseManager.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/database/UserDAO.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/model/Kategori.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/database/KategoriDAO.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/controller/ChatController.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/admin/controller/WelcomeController.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/service/ChatbotService.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/database/BukuDAO.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/module-info.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/admin/controller/RegistrasiController.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/model/Buku.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/admin/controller/LoginController.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/admin/controller/AdminController.java
+/Users/yoshi/Downloads/LibraryBotNew/src/main/java/model/User.java
