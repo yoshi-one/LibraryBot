@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="admin.controller.AdminController"
+            style="-fx-background-color: #F8F9FA;">
+
+    <!-- LEFT SIDEBAR -->
+    <left>
+        <VBox prefWidth="200" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 2, 0);">
+            <padding><Insets top="20" right="15" bottom="20" left="15"/></padding>
+
+            <!-- Logo -->
+            <VBox spacing="2" style="-fx-padding: 0 0 20 0;">
+                <Label text="Admin Panel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+                <Label text="Sitem Perpustakaan" style="-fx-font-size: 11px; -fx-text-fill: #888;"/>
+            </VBox>
+            <Separator/>
+            <VBox spacing="8" style="-fx-padding: 15 0 0 0;">
+                <Button fx:id="btnDashboard" text="  Dashboard" maxWidth="Infinity" alignment="CENTER_LEFT"
+                        onAction="#showDashboard"
+                        style="-fx-background-color: #E8EDFF; -fx-text-fill: #3B3FB6; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 15; -fx-font-size: 13px; -fx-graphic-text-gap: 8;"/>
+                <Button fx:id="btnBuku" text="  Kelola Buku" maxWidth="Infinity" alignment="CENTER_LEFT"
+                        onAction="#showBuku"
+                        style="-fx-background-color: transparent; -fx-text-fill: #444; -fx-background-radius: 10; -fx-padding: 10 15; -fx-font-size: 13px; -fx-cursor: hand;"/>
+                <Button fx:id="btnKategori" text="  Kelola Kategori" maxWidth="Infinity" alignment="CENTER_LEFT"
+                        onAction="#showKategori"
+                        style="-fx-background-color: transparent; -fx-text-fill: #444; -fx-background-radius: 10; -fx-padding: 10 15; -fx-font-size: 13px; -fx-cursor: hand;"/>
+                <Button fx:id="btnUser" text="  Konfirmasi Akun" maxWidth="Infinity" alignment="CENTER_LEFT"
+                        onAction="#showUser"
+                        style="-fx-background-color: transparent; -fx-text-fill: #444; -fx-background-radius: 10; -fx-padding: 10 15; -fx-font-size: 13px; -fx-cursor: hand;"/>
+            </VBox>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Logout" maxWidth="Infinity" alignment="CENTER_LEFT"
+                    onAction="#handleLogout"
+                    style="-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 10; -fx-padding: 10 15; -fx-font-size: 13px; -fx-cursor: hand; -fx-alignment: center; -fx-font-weight: bold;"/>
+        </VBox>
+    </left>
+
+    <!-- MAIN CONTENT -->
+    <center>
+        <VBox>
+            <!-- TOP BAR -->
+            <HBox fx:id="topBar" alignment="CENTER_LEFT" spacing="15"
+                  style="-fx-background-color: #5B63D3; -fx-padding: 15 25;">
+                <Label fx:id="pageTitle" text="Dashboard" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox alignment="CENTER_RIGHT">
+                    <Label fx:id="adminName" text="Ilham" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    <Label text="Administrator" style="-fx-font-size: 11px; -fx-text-fill: #ccc;"/>
+                </VBox>
+            </HBox>
+
+            <!-- PAGE CONTENT (Switched by StackPane) -->
+            <StackPane VBox.vgrow="ALWAYS" fx:id="contentArea">
+
+                <!-- DASHBOARD PAGE -->
+                <ScrollPane fx:id="dashboardPage" fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                    <VBox spacing="20" style="-fx-padding: 25;">
+                        <Label text="Dashboard &amp; System Status" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                        <Label text="Monitor status sistem dan kelola koneksi database" style="-fx-text-fill: #888; -fx-font-size: 13px;"/>
+
+                        <HBox spacing="20">
+                            <!-- Status Koneksi -->
+                            <VBox spacing="10" HBox.hgrow="ALWAYS"
+                                  style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+                                <Label text="🔗  Status Koneksi" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+                                <HBox alignment="CENTER_LEFT" spacing="15">
+                                    <Label text="Status:" style="-fx-text-fill: #888;"/>
+                                    <Label fx:id="lblStatus" text="Terhubung"
+                                           style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 3 10; -fx-background-radius: 20; -fx-font-size: 12px;"/>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="15">
+                                    <Label text="Connection String:" style="-fx-text-fill: #888;"/>
+                                    <Label fx:id="lblConnString" text="perpustakaan.db (SQLite)" style="-fx-font-weight: bold;"/>
+                                </HBox>
+                            </VBox>
+
+                            <!-- Sinkronisasi -->
+                            <VBox spacing="10" HBox.hgrow="ALWAYS"
+                                  style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+                                <Label text="🗄️  Sinkronisasi Data" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+                                <Label text="Terakhir Sinkronisasi:" style="-fx-text-fill: #888;"/>
+                                <Label fx:id="lblSyncTime" text="-" style="-fx-font-size: 13px; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </HBox>
+
+                        <!-- Data Manager Actions -->
+                        <VBox spacing="10"
+                              style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+                            <Label text="💾  Data Manager Actions" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+                            <HBox spacing="15">
+                                <Button text="Open Connection" onAction="#handleOpenConn"
+                                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 18; -fx-font-weight: bold; -fx-cursor: hand;"/>
+                                <Button text="Close Connection" onAction="#handleCloseConn"
+                                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 18; -fx-font-weight: bold; -fx-cursor: hand;"/>
+                                <Button text="Backup Data" onAction="#handleBackup"
+                                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 18; -fx-font-weight: bold; -fx-cursor: hand;"/>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Stat Cards -->
+                        <HBox spacing="20">
+                            <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: #27ae60; -fx-background-radius: 12; -fx-padding: 20;">
+                                <Label text="Total Buku" style="-fx-text-fill: white; -fx-font-size: 13px;"/>
+                                <Label fx:id="lblTotalBuku" text="0" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+                            </VBox>
+                            <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: #1abc9c; -fx-background-radius: 12; -fx-padding: 20;">
+                                <Label text="Total Kategori" style="-fx-text-fill: white; -fx-font-size: 13px;"/>
+                                <Label fx:id="lblTotalKategori" text="0" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+                            </VBox>
+                            <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: #7f5af0; -fx-background-radius: 12; -fx-padding: 20;">
+                                <Label text="Total User" style="-fx-text-fill: white; -fx-font-size: 13px;"/>
+                                <Label fx:id="lblTotalUser" text="0" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- BUKU PAGE -->
+                <ScrollPane fx:id="bukuPage" fitToWidth="true" visible="false" managed="false"
+                            style="-fx-background: transparent; -fx-background-color: transparent;">
+                    <VBox spacing="15" style="-fx-padding: 25;">
+                        <HBox alignment="CENTER_LEFT">
+                            <VBox>
+                                <Label text="Kelola Buku" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                                <Label text="Manajemen data buku perpustakaan" style="-fx-text-fill: #888; -fx-font-size: 13px;"/>
+                            </VBox>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="+ Tambah Buku" onAction="#handleTambahBuku"
+                                    style="-fx-background-color: #3B3FB6; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 20; -fx-font-weight: bold; -fx-cursor: hand;"/>
+                        </HBox>
+                        <TableView fx:id="tableBuku" style="-fx-background-radius: 10; -fx-background-color: white; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+                            <columns>
+                                <TableColumn fx:id="colIdBuku" text="ID BUKU" prefWidth="80"/>
+                                <TableColumn fx:id="colJudul" text="JUDUL" prefWidth="180"/>
+                                <TableColumn fx:id="colPenulis" text="PENULIS" prefWidth="120"/>
+                                <TableColumn fx:id="colPenerbit" text="PENERBIT" prefWidth="120"/>
+                                <TableColumn fx:id="colIsbn" text="ISBN" prefWidth="130"/>
+                                <TableColumn fx:id="colTahun" text="TAHUN" prefWidth="70"/>
+                                <TableColumn fx:id="colStok" text="STOK" prefWidth="60"/>
+                                <TableColumn fx:id="colAksiBuku" text="AKSI" prefWidth="80"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- KATEGORI PAGE -->
+                <ScrollPane fx:id="kategoriPage" fitToWidth="true" visible="false" managed="false"
+                            style="-fx-background: transparent; -fx-background-color: transparent;">
+                    <VBox spacing="15" style="-fx-padding: 25;">
+                        <HBox alignment="CENTER_LEFT">
+                            <VBox>
+                                <Label text="Kelola Kategori" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                                <Label text="Manajemen kategori buku perpustakaan" style="-fx-text-fill: #888; -fx-font-size: 13px;"/>
+                            </VBox>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="+ Tambah Kategori" onAction="#handleTambahKategori"
+                                    style="-fx-background-color: #3B3FB6; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 20; -fx-font-weight: bold; -fx-cursor: hand;"/>
+                        </HBox>
+                        <VBox fx:id="flowKategori" spacing="10"/>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- KONFIRMASI AKUN PAGE -->
+                <ScrollPane fx:id="userPage" fitToWidth="true" visible="false" managed="false"
+                            style="-fx-background: transparent; -fx-background-color: transparent;">
+                    <VBox spacing="20" style="-fx-padding: 25;">
+                        <!-- Header -->
+                        <VBox spacing="4">
+                            <Label text="Konfirmasi Akun Admin" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                            <Label text="Tinjau dan setujui permintaan registrasi akun baru" style="-fx-text-fill: #888; -fx-font-size: 13px;"/>
+                        </VBox>
+
+                        <!-- Badge pending -->
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Menunggu Konfirmasi:" style="-fx-font-size: 13px; -fx-text-fill: #555;"/>
+                            <Label fx:id="lblPendingCount" text="0"
+                                   style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 2 10; -fx-font-size: 13px;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="🔄 Refresh" onAction="#handleRefreshKonfirmasi"
+                                    style="-fx-background-color: #ECF0F1; -fx-text-fill: #333; -fx-background-radius: 8; -fx-padding: 8 16; -fx-font-size: 12px; -fx-cursor: hand;"/>
+                        </HBox>
+
+                        <!-- Tabel pending -->
+                        <VBox spacing="8"
+                              style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+                            <Label text="⏳  Akun Menunggu Persetujuan" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                            <TableView fx:id="tableUser" prefHeight="250"
+                                       style="-fx-background-radius: 8; -fx-background-color: #f9f9f9;">
+                                <columns>
+                                    <TableColumn fx:id="colIdUser" text="ID" prefWidth="75"/>
+                                    <TableColumn fx:id="colUsername" text="USERNAME" prefWidth="150"/>
+                                    <TableColumn fx:id="colEmail" text="EMAIL" prefWidth="220"/>
+                                    <TableColumn fx:id="colRole" text="TANGGAL DAFTAR" prefWidth="140"/>
+                                    <TableColumn fx:id="colAksiUser" text="AKSI" prefWidth="160"/>
+                                </columns>
+                                <placeholder>
+                                    <Label text="✅ Tidak ada akun yang menunggu konfirmasi" style="-fx-text-fill: #888; -fx-font-size: 13px;"/>
+                                </placeholder>
+                            </TableView>
+                        </VBox>
+
+                        <!-- Tabel sudah terkonfirmasi -->
+                        <VBox spacing="8"
+                              style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);">
+                            <Label text="✅  Akun Terkonfirmasi" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                            <TableView fx:id="tableUserKonfirmasi" prefHeight="200"
+                                       style="-fx-background-radius: 8; -fx-background-color: #f9f9f9;">
+                                <columns>
+                                    <TableColumn fx:id="colIdUserK" text="ID" prefWidth="75"/>
+                                    <TableColumn fx:id="colUsernameK" text="USERNAME" prefWidth="150"/>
+                                    <TableColumn fx:id="colEmailK" text="EMAIL" prefWidth="220"/>
+                                    <TableColumn fx:id="colAksiUserK" text="AKSI" prefWidth="120"/>
+                                </columns>
+                                <placeholder>
+                                    <Label text="Belum ada akun terkonfirmasi" style="-fx-text-fill: #888; -fx-font-size: 13px;"/>
+                                </placeholder>
+                            </TableView>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+
+            </StackPane>
+        </VBox>
+    </center>
+
+</BorderPane>

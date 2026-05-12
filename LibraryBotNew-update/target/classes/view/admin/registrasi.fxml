@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="admin.controller.RegistrasiController"
+           prefWidth="520" prefHeight="650"
+           style="-fx-background-color: linear-gradient(to bottom right, #4A52C8, #6B72E8, #8E78D4);">
+
+    <Circle radius="150" fill="#ffffff" opacity="0.04" translateX="-180" translateY="-200"/>
+    <Circle radius="100" fill="#ffffff" opacity="0.05" translateX="210" translateY="230"/>
+
+    <VBox alignment="CENTER" spacing="0" maxWidth="420"
+          style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 30, 0, 0, 8);">
+
+        <!-- Header -->
+        <VBox alignment="CENTER" spacing="5" style="-fx-background-color: #5B63D3; -fx-background-radius: 20 20 0 0; -fx-padding: 28 30 25 30;">
+            <!-- Back button row -->
+            <HBox alignment="CENTER_LEFT" maxWidth="Infinity">
+                <Button text="← Kembali" onAction="#goToWelcome"
+                        style="-fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 5 14; -fx-font-size: 12px; -fx-cursor: hand; -fx-border-color: rgba(255,255,255,0.3); -fx-border-radius: 20; -fx-border-width: 1;"/>
+            </HBox>
+            <Label text="📚" style="-fx-font-size: 30px;"/>
+            <Label text="Buat Akun Admin"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Daftarkan diri untuk akses panel admin"
+                   style="-fx-font-size: 11px; -fx-text-fill: rgba(255,255,255,0.75);"/>
+        </VBox>
+
+        <!-- Form -->
+        <VBox alignment="CENTER" spacing="14" style="-fx-padding: 28 40 32 40;">
+
+            <VBox spacing="5" maxWidth="Infinity">
+                <Label text="Username" style="-fx-font-weight: bold; -fx-font-size: 12px; -fx-text-fill: #444;"/>
+                <TextField fx:id="tfUsername" promptText="Masukkan username"
+                           style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #e0e0e0; -fx-border-width: 1.5; -fx-padding: 10 15; -fx-font-size: 13px; -fx-pref-height: 42;"/>
+            </VBox>
+
+            <VBox spacing="5" maxWidth="Infinity">
+                <Label text="Email" style="-fx-font-weight: bold; -fx-font-size: 12px; -fx-text-fill: #444;"/>
+                <TextField fx:id="tfEmail" promptText="Masukkan email"
+                           style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #e0e0e0; -fx-border-width: 1.5; -fx-padding: 10 15; -fx-font-size: 13px; -fx-pref-height: 42;"/>
+            </VBox>
+
+            <VBox spacing="5" maxWidth="Infinity">
+                <Label text="Password" style="-fx-font-weight: bold; -fx-font-size: 12px; -fx-text-fill: #444;"/>
+                <PasswordField fx:id="tfPassword" promptText="Masukkan password"
+                               style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #e0e0e0; -fx-border-width: 1.5; -fx-padding: 10 15; -fx-font-size: 13px; -fx-pref-height: 42;"/>
+            </VBox>
+
+            <Label fx:id="lblError" text="" wrapText="true" maxWidth="320"
+                   style="-fx-text-fill: #e74c3c; -fx-font-size: 12px;"/>
+
+            <Button text="Daftar Sekarang" maxWidth="Infinity" onAction="#handleDaftar"
+                    style="-fx-background-color: #5B63D3; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-pref-height: 44; -fx-cursor: hand;"/>
+
+            <HBox alignment="CENTER" spacing="5">
+                <Label text="Sudah punya akun?" style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+                <Hyperlink text="Login di sini" onAction="#goToLogin"
+                           style="-fx-font-size: 12px; -fx-text-fill: #5B63D3; -fx-font-weight: bold; -fx-border-color: transparent;"/>
+            </HBox>
+
+        </VBox>
+    </VBox>
+</StackPane>
